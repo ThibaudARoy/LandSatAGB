@@ -1,3 +1,14 @@
-# LandSatAGB
+# Vegetation Density Analysis Using LandSat8 Satellite Images
+This repository allows for a straight-forward analysis of vegetation density using the LandSat8 Satellite imagery, specifically using the Collection 1 T1 Surface Reflection data gathered by NASA and ran by the United States Geological Survey. This repository uses EarthEngine's API to collect the images in .tif format, with storage available for Cloud, Google Drive, or local storage and fixes images with cloud masking. Visualization of the data will automatically be generated.
+# **How to Use Repository**
+Create an EarthEngine account through the following [link](https://www.signup.earthengine.google.com "link"). Install necessary modules with Jupyter Kernel in same path as interpreter. Run the notebook and you will be prompted to authenticate your login. You will be prompted to input your date range, which for LandSat8 goes back to February 11th, 2013. Then, you will be prompted to input your coordinates in format "longitude,latitude" with East and North being positive. The notebook will automatically generate your plots. 
 
-Just in the works
+It is possible to change image resolution, shape and size of image generated, if clould masking is applied, satellite bands that are collected, and where images are stored by manually editing notebook. The default settings are that image is a square, resolution of 224 x 224 pixels, cloud masking applied, bands 2-5 collected, and images are stored locally. 
+# **How is Vegetation Density Calculated**
+Vegetation density is defined as the product of number of stems per unit area (N) and the average diameter of the stems. This can be calculated using several vegetation indices. We can calculate these vegetation indices using chlorophyll reflection of plants. Health yvegetation reflects more near-infrared and green light compared to other wavelengths but absorbs more red and blue light. Therefore, using normalization techniues we get indices that shed light on the health of vegetation. The following frequencies are provided by the LandSat 8, and for this notebook the red, green, blue, near-infrared, and short-wave infrared bands were used. ![image](https://user-images.githubusercontent.com/78175569/148590496-2983dd4e-010f-4a13-9c2a-6102d07f1e9f.png) 
+
+These .tif images from LandSat 8 are rasters. Rasters are spatial data models that define space as an array of equally sized cells and thus can be transformed and normalized.
+
+# **Other Analysis Used**
+
+In this notebook, I included a few other indices such as the NDWI that allows for a clear image of bodies water in your selected area, as well as NDBI which allows for urban patterns. Note that all of these indices just show one way to analyze satellite imagery and should be used in combination with several images and techniques to give the a more complete idea of the change of an area's water, urban growth, and vegetation health.
